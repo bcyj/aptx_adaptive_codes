@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{7A8A5A10-CA11-4D42-9D01-000000000004}</ProjectGuid><Keyword>Win32Proj</Keyword><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><PlatformToolset>v142</PlatformToolset><CharacterSet>Unicode</CharacterSet></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="aptx_aa_options.props" />
+  <PropertyGroup><OutDir>$(AptxAaOutputRoot)\$(Platform)\$(Configuration)\</OutDir><IntDir>$(OutDir)obj\bundle\</IntDir><TargetName>aptx_aa</TargetName></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile><AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\common\include;$(MSBuildThisFileDirectory)..\..\common\src\include;$(MSBuildThisFileDirectory)..\..\encoder\include;$(MSBuildThisFileDirectory)..\..\encoder\src\include;$(MSBuildThisFileDirectory)..\..\decoder\include;$(MSBuildThisFileDirectory)..\..\decoder\src\include;$(MSBuildThisFileDirectory)..\..\..\include;$(MSBuildThisFileDirectory)..\..\..\..\audio_codec_common\math\include;$(MSBuildThisFileDirectory)..\..\..\..\audio_codec_common\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories></ClCompile>
+    <Link><ModuleDefinitionFile>$(MSBuildThisFileDirectory)aptx_aa.def</ModuleDefinitionFile></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\common\src\api\runtime.c" /><ClCompile Include="..\..\common\src\api\util.c" /><ClCompile Include="..\..\common\src\codec\params.c" /><ClCompile Include="..\..\common\src\dsp\engine.c" /><ClCompile Include="..\..\common\src\dsp\predict.c" /><ClCompile Include="..\..\common\src\tables\codec_tables.c" />
+    <ClCompile Include="..\..\encoder\src\api\encoder.c" /><ClCompile Include="..\..\encoder\src\codec\analysis.c" /><ClCompile Include="..\..\encoder\src\codec\quantize.c" /><ClCompile Include="..\..\encoder\src\codec\allocate.c" /><ClCompile Include="..\..\encoder\src\codec\pack.c" /><ClCompile Include="..\..\encoder\src\stream\stream.c" /><ClCompile Include="..\..\encoder\src\stream\mode_tables.c" />
+    <ClCompile Include="..\..\decoder\src\api\decoder.c" /><ClCompile Include="..\..\decoder\src\codec\bitstream.c" /><ClCompile Include="..\..\decoder\src\codec\reconstruct.c" /><ClCompile Include="..\..\decoder\src\dsp\synthesis.c" /><ClCompile Include="..\..\decoder\src\dsp\synthesis_tables.c" /><ClCompile Include="..\..\decoder\src\dsp\decoder_trees.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\audio_codec_common\core\platform\windows\audio_common_core.vcxproj"><Project>{FDD2FD01-4069-49C2-A55D-100000000002}</Project><LinkLibraryDependencies>true</LinkLibraryDependencies></ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

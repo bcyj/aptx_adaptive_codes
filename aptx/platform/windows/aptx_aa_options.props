@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <AptxAaDecoderFixedPoint Condition="'$(AptxAaDecoderFixedPoint)'==''">1</AptxAaDecoderFixedPoint>
+    <AptxAaOutputRoot Condition="'$(AptxAaOutputRoot)'==''">$(MSBuildThisFileDirectory)..\..\..\build\windows</AptxAaOutputRoot>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <CompileAs>CompileAsC</CompileAs>
+      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <WarningLevel>Level4</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;APTX_AA_NO_CRT=0;APTX_AA_DRIVER_RESOURCES=0;APTX_AA_EXTERNAL_ALLOCATOR_ONLY=0;APTX_AA_DECODER_FIXED_POINT=$(AptxAaDecoderFixedPoint);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)'=='Release'">NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Optimization Condition="'$(Configuration)'=='Debug'">Disabled</Optimization>
+      <Optimization Condition="'$(Configuration)'=='Release'">MaxSpeed</Optimization>
+      <DebugInformationFormat Condition="'$(Configuration)'=='Debug'">ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Target Name="ValidateAptxAaOptions" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(AptxAaDecoderFixedPoint)'!='0' and '$(AptxAaDecoderFixedPoint)'!='1'" Text="AptxAaDecoderFixedPoint must be 0 or 1" />
+  </Target>
+</Project>

@@ -1,0 +1,7 @@
+/build/
+/build-*/
+/Testing/
+*.o
+__pycache__/
+/baselines
+/tests

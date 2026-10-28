@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals"><ProjectGuid>{7A8A5A10-CA11-4D42-9D01-000000000002}</ProjectGuid><Keyword>Win32Proj</Keyword><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration"><ConfigurationType>StaticLibrary</ConfigurationType><PlatformToolset>v142</PlatformToolset><CharacterSet>Unicode</CharacterSet></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="aptx_aa_options.props" />
+  <PropertyGroup><OutDir>$(AptxAaOutputRoot)\$(Platform)\$(Configuration)\</OutDir><IntDir>$(OutDir)obj\encoder\</IntDir><TargetName>aptx_aa_encoder</TargetName></PropertyGroup>
+  <ItemDefinitionGroup><ClCompile><AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\..\encoder\include;$(MSBuildThisFileDirectory)..\..\encoder\src\include;$(MSBuildThisFileDirectory)..\..\common\include;$(MSBuildThisFileDirectory)..\..\common\src\include;$(MSBuildThisFileDirectory)..\..\..\..\audio_codec_common\math\include;$(MSBuildThisFileDirectory)..\..\..\..\audio_codec_common\core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories></ClCompile></ItemDefinitionGroup>
+  <ItemGroup><ClCompile Include="..\..\encoder\src\api\encoder.c" /><ClCompile Include="..\..\encoder\src\codec\analysis.c" /><ClCompile Include="..\..\encoder\src\codec\quantize.c" /><ClCompile Include="..\..\encoder\src\codec\allocate.c" /><ClCompile Include="..\..\encoder\src\codec\pack.c" /><ClCompile Include="..\..\encoder\src\stream\stream.c" /><ClCompile Include="..\..\encoder\src\stream\mode_tables.c" /></ItemGroup>
+  <ItemGroup><ClInclude Include="..\..\encoder\include\aptx\encoder\encoder.h" /><ClInclude Include="..\..\encoder\src\include\encoder_internal.h" /><ClInclude Include="..\..\encoder\src\include\mode_tables.h" /></ItemGroup>
+  <ItemGroup><ProjectReference Include="aptx_aa_common.vcxproj"><Project>{7A8A5A10-CA11-4D42-9D01-000000000001}</Project></ProjectReference></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
